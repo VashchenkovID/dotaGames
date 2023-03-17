@@ -1,14 +1,14 @@
-import React from 'react';
-import cn from 'classnames/bind';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.styl';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PublicRoutesEnum } from 'src/router';
 
 import { HeaderIdEnum } from 'src/utils/enum';
+import HeaderModule from 'src/components/HeaderModule/HeaderModule';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import { Drawer, IconButton } from '@material-ui/core';
 
-const cx = cn.bind(styles);
-
-interface Item {
+export interface HeaderItem {
   label: string;
   id: string;
   href?: string;
@@ -27,14 +27,44 @@ const Header: React.FC<IHeaderProps> = () => {
 
   const myLoc = `/${location.pathname.split('/').slice(1, 2).join('')}`;
 
-  const items: Item[] = [
+  const items: HeaderItem[] = [
     {
-      label: 'Справочники',
-      id: HeaderIdEnum.DIRECTORIES,
-      href: PublicRoutesEnum.SHOP,
-      active: myLoc === PublicRoutesEnum.SHOP,
+      label: 'Главная',
+      id: HeaderIdEnum.GENERAL,
+      href: PublicRoutesEnum.GENERAL,
+      active: myLoc === PublicRoutesEnum.GENERAL,
       onClick: (e) => {
-        headerTransition(e, PublicRoutesEnum.SHOP);
+        headerTransition(e, PublicRoutesEnum.GENERAL);
+      },
+      permission: [],
+    },
+    {
+      label: 'Профессиональные матчи',
+      id: HeaderIdEnum.MATCHES,
+      href: PublicRoutesEnum.MATCHES,
+      active: myLoc === PublicRoutesEnum.MATCHES,
+      onClick: (e) => {
+        headerTransition(e, PublicRoutesEnum.MATCHES);
+      },
+      permission: [],
+    },
+    {
+      label: 'Команды',
+      id: HeaderIdEnum.TEAMS,
+      href: PublicRoutesEnum.TEAMS,
+      active: myLoc === PublicRoutesEnum.TEAMS,
+      onClick: (e) => {
+        headerTransition(e, PublicRoutesEnum.TEAMS);
+      },
+      permission: [],
+    },
+    {
+      label: 'Персонажи',
+      id: HeaderIdEnum.CHARACTERS,
+      href: PublicRoutesEnum.HEROES,
+      active: myLoc === PublicRoutesEnum.HEROES,
+      onClick: (e) => {
+        headerTransition(e, PublicRoutesEnum.HEROES);
       },
       permission: [],
     },
@@ -45,7 +75,47 @@ const Header: React.FC<IHeaderProps> = () => {
     navigate(patch);
   };
 
-  return <div>11</div>;
+  const headerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    if (headerRef && headerRef.current) {
+      setWidth(headerRef.current.clientWidth);
+    }
+  }, []);
+
+  return (
+    <div ref={headerRef} className={styles.Header}>
+      {width <= 600 ? (
+        <div>
+          <IconButton
+            size={'medium'}
+            onClick={() => setIsOpen(true)}
+            color={'inherit'}
+          >
+            <DehazeIcon fontSize={'large'} />
+          </IconButton>
+          <Drawer open={isOpen} onClose={() => setIsOpen(false)}>
+            {items.map((item, index) => (
+              <li
+                key={index}
+                className={styles.sidebarLink}
+                onClick={() => setIsOpen(false)}
+              >
+                <HeaderModule item={item} isSidebar />
+              </li>
+            ))}
+          </Drawer>
+        </div>
+      ) : (
+        <nav className={styles.Header}>
+          {items.map((item, index) => (
+            <HeaderModule item={item} key={index} isSidebar={false} />
+          ))}
+        </nav>
+      )}
+    </div>
+  );
 };
 
 export default Header;

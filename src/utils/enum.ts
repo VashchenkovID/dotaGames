@@ -11,8 +11,10 @@ export const enum RequestStatusEnum {
 }
 
 export enum HeaderIdEnum {
-  DIRECTORIES = 'directories',
-  SCENARIOS = 'scenarios',
+  GENERAL = 'general',
+  MATCHES = 'matches',
+  CHARACTERS = 'characters',
+  TEAMS = 'teams',
 }
 
 export enum TypePropertyEnum {

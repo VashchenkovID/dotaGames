@@ -6,6 +6,7 @@ import { setupStore } from './redux/store';
 import { setAutoFreeze } from 'immer';
 import { AppRouter } from './components/AppRouter';
 import Header from 'src/components/Header';
+import style from './App.styl';
 
 const store = setupStore();
 
@@ -16,8 +17,10 @@ const App = () => {
   return (
     <Provider store={store}>
       <ReduxRouter history={browserHistory} store={store}>
-        <Header />
-        <AppRouter />
+        <section className={style.container}>
+          <Header />
+          <AppRouter />
+        </section>
       </ReduxRouter>
     </Provider>
   );

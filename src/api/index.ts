@@ -43,7 +43,6 @@ const buildParamsImagePost = (met: string, data?: any) => {
 
 const buildParams = (met: string) => ({
   method: met,
-  headers: { Authorization: `Bearer ${storageToken()}` },
 });
 
 const handleResponse = async (res: any) => {

@@ -17,6 +17,12 @@ export const enum PrivateRoutesEnum {
 export const enum PublicRoutesEnum {
   INFO_PAGE = '/info',
   GENERAL = '/general',
+  MATCHES = '/matches',
+  HEROES = '/heroes',
+  TEAMS = '/teams',
   SHOP = '/shop',
   VIEW_CAKE = '/shop/view',
+  MATCH = '/matches/view',
+  TEAM = 'teams/view',
+  HERO = '/heroes/view',
 }
