@@ -6,12 +6,20 @@ import { CircularProgress } from '@material-ui/core';
 import style from './Matches.styl';
 
 const MatchesContainer: React.FC = () => {
+  //Все матчи
   const [matches, setMatches] = useState<ProMatchModel[]>([]);
+  //Отображаемые матчи
+  const [viewMatches, setViewMatches] = useState<ProMatchModel[]>([]);
+  //Подгрузка матчей (на api нет пагинации)
+  const [isMore, setIsMore] = useState(1);
+  const [isViewButton, setIsViewButton] = useState(true);
+  //Request
   const { load: fetchDotaMatches, isLoading } = useRequest(
     matchesApi.fetchProMatches,
     (data) => {
       if (data) {
         setMatches(data);
+        setViewMatches(data.slice(0, 10));
       }
     },
   );
@@ -19,6 +27,14 @@ const MatchesContainer: React.FC = () => {
     fetchDotaMatches();
   }, []);
 
+  useEffect(() => {
+    if (isMore) {
+      setViewMatches(matches.slice(0, 10 * isMore));
+      if (isMore > matches.length / 10) {
+        setIsViewButton(false);
+      } else setIsViewButton(true);
+    }
+  }, [isMore]);
   return (
     <div>
       {isLoading && (
