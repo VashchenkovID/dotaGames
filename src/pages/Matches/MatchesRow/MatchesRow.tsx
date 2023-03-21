@@ -4,6 +4,8 @@ import styles from './MatchesRow.styl';
 import { durationConverter } from 'src/utils/functions';
 import { Tooltip } from '@material-ui/core';
 import cn from 'classnames';
+import { useNavigate } from 'react-router-dom';
+import { PublicRoutesEnum } from 'src/router';
 
 interface IComponentProps {
   item: ProMatchModel;
@@ -11,6 +13,7 @@ interface IComponentProps {
 }
 
 const MatchesRow: React.FC<IComponentProps> = ({ item, index }) => {
+  const navigate = useNavigate();
   const agoTime = useMemo(() => {
     if (item.start_time) {
       const result = new Date().getTime() - item.start_time;
@@ -36,7 +39,12 @@ const MatchesRow: React.FC<IComponentProps> = ({ item, index }) => {
   }, [item.duration]);
   return (
     <div className={styles.container}>
-      <div className={styles.titleCell}>
+      <div
+        onClick={() => {
+          navigate(`${PublicRoutesEnum.MATCH}/${item.match_id}`);
+        }}
+        className={styles.titleCell}
+      >
         <span className={styles.title}>{item.match_id}</span>
         <div className={cn(styles.subTitle, styles.rowHover)}>
           <span className={styles.rowHover}>{agoTime}</span>/

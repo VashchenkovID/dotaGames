@@ -7,4 +7,5 @@ export const enum EnpointsEnum {
   LOGIN_USER = '/user/login',
   AUTHORIZATION_USER = '/user/auth',
   GET_PRO_MATCHES = '/proMatches',
+  GET_MATCH = '/matches',
 }

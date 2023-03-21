@@ -4,6 +4,7 @@ import { IRouteItem, PublicRoutesEnum } from 'src/router';
 import ShopPage from 'src/pages/ShopPage/ShopPage';
 import MainPage from 'src/pages/MainPage/MainPage';
 import MatchesContainer from 'src/pages/Matches/MatchesContainer';
+import ViewMatchContainer from 'src/pages/ViewMatch/ViewMatchContainer';
 
 export const publicRoutes: Array<IRouteItem> = [
   {
@@ -28,7 +29,7 @@ export const publicRoutes: Array<IRouteItem> = [
   },
   {
     path: `${PublicRoutesEnum.MATCH}/:id`,
-    element: <></>,
+    element: <ViewMatchContainer />,
   },
   {
     path: `${PublicRoutesEnum.TEAM}/:id`,
