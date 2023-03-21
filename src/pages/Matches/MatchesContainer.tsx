@@ -4,6 +4,7 @@ import matchesApi from 'src/api/requests/matchesApi';
 import { ProMatchModel } from 'src/api/models/ProMatchModel';
 import { CircularProgress } from '@material-ui/core';
 import style from './Matches.styl';
+import Matches from 'src/pages/Matches/Matches';
 
 const MatchesContainer: React.FC = () => {
   //Все матчи
@@ -34,13 +35,20 @@ const MatchesContainer: React.FC = () => {
         setIsViewButton(false);
       } else setIsViewButton(true);
     }
-  }, [isMore]);
+  }, [isMore, matches]);
   return (
     <div>
       {isLoading && (
         <div className={style.loader}>
           <CircularProgress />
         </div>
+      )}
+      {!isLoading && (
+        <Matches
+          viewMatches={viewMatches}
+          isViewButton={isViewButton}
+          setIsMore={setIsMore}
+        />
       )}
     </div>
   );

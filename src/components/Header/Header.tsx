@@ -59,6 +59,26 @@ const Header: React.FC<IHeaderProps> = () => {
       permission: [],
     },
     {
+      label: 'Лиги',
+      id: HeaderIdEnum.LEAGUES,
+      href: PublicRoutesEnum.LEAGUES,
+      active: myLoc === PublicRoutesEnum.LEAGUES,
+      onClick: (e) => {
+        headerTransition(e, PublicRoutesEnum.LEAGUES);
+      },
+      permission: [],
+    },
+    {
+      label: 'Игроки',
+      id: HeaderIdEnum.PLAYERS,
+      href: PublicRoutesEnum.PLAYERS,
+      active: myLoc === PublicRoutesEnum.PLAYERS,
+      onClick: (e) => {
+        headerTransition(e, PublicRoutesEnum.PLAYERS);
+      },
+      permission: [],
+    },
+    {
       label: 'Персонажи',
       id: HeaderIdEnum.CHARACTERS,
       href: PublicRoutesEnum.HEROES,

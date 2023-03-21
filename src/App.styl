@@ -4,4 +4,23 @@
   background-size:cover;
   background-position:center;
   height 100vh
+  font-family: 'Inter';
+  font-style: normal;
+}
+.styled-scrollbars {
+  --scrollbar-foreground: #999;
+  --scrollbar-background: #333;
+  --scrollbar-size: 10px;
+  /* плашка-бегунок, фон */
+  scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
+}
+.styled-scrollbars::-webkit-scrollbar {
+  width: var(--scrollbar-size); /* в основном для вертикальных полос прокрутки */
+  height: var(--scrollbar-size); /* в основном для горизонтальных полос прокрутки */
+}
+.styled-scrollbars::-webkit-scrollbar-thumb { /* плашка-бегунок */
+  background: var(--scrollbar-foreground); /* фон */
+}
+.styled-scrollbars::-webkit-scrollbar-track { /* фон */
+  background: var(--scrollbar-background);
 }

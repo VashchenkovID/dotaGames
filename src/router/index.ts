@@ -23,6 +23,10 @@ export const enum PublicRoutesEnum {
   SHOP = '/shop',
   VIEW_CAKE = '/shop/view',
   MATCH = '/matches/view',
-  TEAM = 'teams/view',
+  TEAM = '/teams/view',
   HERO = '/heroes/view',
+  LEAGUES = '/leagues',
+  PLAYERS = '/players',
+  LEAGUE = '/leagues/view',
+  PLAYER = '/players/view',
 }

@@ -2266,6 +2266,11 @@ camelcase@^6.2.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
+can-use-dom@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
+  integrity sha512-ceOhN1DL7Y4O6M0j9ICgmTYziV89WMd96SvSl0REd8PMgrY0B/WBOPoed5S1KUmJqXgUXh8gzSe6E3ae27upsQ==
+
 caniuse-lite@^1.0.30001332:
   version "1.0.30001332"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001332.tgz#39476d3aa8d83ea76359c70302eafdd4a1d727dd"
@@ -4383,6 +4388,11 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
@@ -5830,6 +5840,22 @@ signal-exit@^3.0.3:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
+
+simplebar-core@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/simplebar-core/-/simplebar-core-1.2.2.tgz#09c8e1b0e5fab9250ecf7cfda11d6bf0d7b8f165"
+  integrity sha512-uVNCnLtZRHgzBd5Tg23hGA5LX2NBt15xPQ3UhPUbPRnSx3rEYuWLK3iEnkR8Yxkcp/Kf/Vu/PJTEaiaJ3T0gTw==
+  dependencies:
+    can-use-dom "^0.1.0"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
+
+simplebar-react@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/simplebar-react/-/simplebar-react-3.2.2.tgz#ce1e764e2b1d59fdfb8fe1d6285eb88124f7f13f"
+  integrity sha512-QkUA9ZOELCp9ITJxvxARDqT87+9DkY75Atu9Ov9IfPzAkfwOTohjAXnyw3WvhvSSCxdHfl5yZIGzfNU0ZeNkDA==
+  dependencies:
+    simplebar-core "^1.2.2"
 
 slash@^3.0.0:
   version "3.0.0"

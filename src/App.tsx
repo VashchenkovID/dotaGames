@@ -14,6 +14,7 @@ const App = () => {
   useEffect(() => {
     setAutoFreeze(false);
   }, []);
+
   return (
     <Provider store={store}>
       <ReduxRouter history={browserHistory} store={store}>
