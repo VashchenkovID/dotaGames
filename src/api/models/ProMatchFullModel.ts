@@ -1,6 +1,8 @@
 import { ChatModel } from 'src/api/models/ChatModel';
 import { DraftTimeModel } from 'src/api/models/DraftTimeModel';
 import { PlayerModel } from 'src/api/models/PlayerModel';
+import {LeagueModel} from "src/api/models/LeagueModel";
+import {TeamModel} from "src/api/models/TeamModel";
 
 export interface ProMatchFullModel {
   match_id: number;
@@ -35,9 +37,9 @@ export interface ProMatchFullModel {
   replay_salt: number;
   series_id: number;
   series_type: number;
-  radiant_team: {};
-  dire_team: {};
-  league: {};
+  radiant_team: TeamModel;
+  dire_team: TeamModel;
+  league: LeagueModel;
   skill: number;
   players: PlayerModel[];
   patch: number;

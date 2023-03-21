@@ -11,6 +11,7 @@ interface IComponentProps {
 }
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+import PageTitle from 'src/components/PageTitle/PageTitle';
 
 const Matches: React.FC<IComponentProps> = ({
   viewMatches,
@@ -19,7 +20,7 @@ const Matches: React.FC<IComponentProps> = ({
 }) => {
   return (
     <section className={styles.container}>
-      <div className={styles.title}>Список матчей</div>
+      <PageTitle text={'Матчи'} />
       <MatchesHeader />
       <SimpleBar style={{ maxHeight: 'calc(100vh - 360px)' }}>
         {viewMatches.length > 0 &&

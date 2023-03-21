@@ -4,6 +4,7 @@ import useRequest from 'src/hooks/useRequest';
 import MatchesApi from 'src/api/requests/matchesApi';
 import { ProMatchFullModel } from 'src/api/models/ProMatchFullModel';
 import ScreenLoader from 'src/components/ScreenLoader/ScreenLoader';
+import ViewMatch from 'src/pages/ViewMatch/ViewMatch';
 
 const ViewMatchContainer: React.FC = () => {
   const params = useParams();
@@ -22,8 +23,12 @@ const ViewMatchContainer: React.FC = () => {
       fetchFullMatch(params.id);
     }
   }, [params]);
-
-  return <div>{isLoading && <ScreenLoader />}</div>;
+  return (
+    <div>
+      {isLoading && <ScreenLoader />}
+      {!isLoading && match && <ViewMatch match={match} />}
+    </div>
+  );
 };
 
 export default ViewMatchContainer;
