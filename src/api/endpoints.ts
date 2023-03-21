@@ -1,4 +1,5 @@
 export const enum EnpointsEnum {
+  INIT = '/constants',
   CREATE_CAKE = '/device/shop/create',
   GET_CAKES = '/device/shop/getAll',
   GET_ONE_CAKE = '/device/shop/get/:id',

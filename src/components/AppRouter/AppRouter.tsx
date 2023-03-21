@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { IRouteItem, PublicRoutesEnum } from 'src/router';
 import ShopPage from 'src/pages/ShopPage/ShopPage';
 import MainPage from 'src/pages/MainPage/MainPage';
 import MatchesContainer from 'src/pages/Matches/MatchesContainer';
 import ViewMatchContainer from 'src/pages/ViewMatch/ViewMatchContainer';
+import { useAppDispatch } from 'src/hooks/useAppDispatch';
+import { fetchInit } from 'src/redux/features/init/InitActions';
+import { useAppSelector } from 'src/hooks/useAppSelector';
+import {
+  selectInitHeroes,
+  selectInitItems,
+  selectInitRegions,
+} from 'src/redux/features/init/InitSelectors';
 
 export const publicRoutes: Array<IRouteItem> = [
   {
@@ -59,6 +67,14 @@ export const publicRoutes: Array<IRouteItem> = [
 ];
 
 const AppRouter = () => {
+  const heroes = useAppSelector(selectInitHeroes);
+  const items = useAppSelector(selectInitItems);
+  const regoins = useAppSelector(selectInitRegions);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchInit());
+  }, []);
+  console.log(heroes, items, regoins);
   return (
     <>
       <Routes>
