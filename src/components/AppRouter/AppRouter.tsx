@@ -39,7 +39,22 @@ export const publicRoutes: Array<IRouteItem> = [
     path: `${PublicRoutesEnum.HERO}/:id`,
     element: <></>,
   },
-  { path: `${PublicRoutesEnum.VIEW_CAKE}/:id`, element: <div></div> },
+  {
+    path: `${PublicRoutesEnum.PLAYER}/:id`,
+    element: <></>,
+  },
+  {
+    path: `${PublicRoutesEnum.LEAGUE}/:id`,
+    element: <></>,
+  },
+  {
+    path: `${PublicRoutesEnum.LEAGUES}`,
+    element: <></>,
+  },
+  {
+    path: `${PublicRoutesEnum.PLAYERS}`,
+    element: <></>,
+  },
   { path: PublicRoutesEnum.INFO_PAGE, element: <div></div> },
 ];
 
