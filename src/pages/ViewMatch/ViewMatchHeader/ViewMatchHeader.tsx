@@ -7,6 +7,9 @@ import WinnerBadge, {
   WinnerSide,
 } from 'src/components/WinnerBadge/WinnerBadge';
 import { durationConverter } from 'src/utils/functions';
+import { useAppSelector } from 'src/hooks/useAppSelector';
+import { selectInitRegions } from 'src/redux/features/init/InitSelectors';
+import { object } from 'prop-types';
 
 interface IComponentProps {
   match: ProMatchFullModel;
@@ -15,10 +18,23 @@ interface IComponentProps {
 const cx = cn.bind(styles);
 
 const ViewMatchHeader: React.FC<IComponentProps> = ({ match }) => {
+  const regions = useAppSelector(selectInitRegions);
+
+  const region = useMemo(() => {
+    if (regions && regions.length > 0) {
+      return regions.find((reg: any) => reg.id === match.region)?.name;
+    } else return 'неизвестно';
+  }, [regions]);
+
   const rightSideItems = [
     { id: 0, title: 'ID матча', text: match.match_id },
-    { id: 1, title: 'Лига', text: match.league.name },
+    {
+      id: 1,
+      title: 'Регион',
+      text: region,
+    },
   ];
+
   const agoTime = useMemo(() => {
     if (match.start_time) {
       const result = new Date().getTime() - match.start_time;

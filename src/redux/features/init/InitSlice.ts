@@ -21,7 +21,11 @@ const initSlice = createSlice({
       (state, action: PayloadAction<any>) => {
         state.items = action.payload[0]?.value;
         state.heroes = action.payload[1]?.value;
-        state.regions = action.payload[2]?.value;
+        state.regions = Object.values(action.payload[2]?.value).map(
+          (reg, index) => {
+            return { id: index, name: reg };
+          },
+        );
         state.status = RequestStatusEnum.FULFILLED;
         state.error = null;
       },

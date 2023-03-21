@@ -67,14 +67,10 @@ export const publicRoutes: Array<IRouteItem> = [
 ];
 
 const AppRouter = () => {
-  const heroes = useAppSelector(selectInitHeroes);
-  const items = useAppSelector(selectInitItems);
-  const regoins = useAppSelector(selectInitRegions);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchInit());
   }, []);
-  console.log(heroes, items, regoins);
   return (
     <>
       <Routes>
