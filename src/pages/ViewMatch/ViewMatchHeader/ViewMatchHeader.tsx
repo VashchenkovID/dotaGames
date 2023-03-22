@@ -9,7 +9,6 @@ import WinnerBadge, {
 import { durationConverter } from 'src/utils/functions';
 import { useAppSelector } from 'src/hooks/useAppSelector';
 import { selectInitRegions } from 'src/redux/features/init/InitSelectors';
-import { object } from 'prop-types';
 
 interface IComponentProps {
   match: ProMatchFullModel;

@@ -12,6 +12,7 @@ export interface PlayerModel {
   backpack_0: number;
   backpack_1: number;
   backpack_2: number;
+  net_worth: number;
   buyback_log: [
     {
       time: number;

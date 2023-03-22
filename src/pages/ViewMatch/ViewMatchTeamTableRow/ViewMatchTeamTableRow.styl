@@ -1,0 +1,40 @@
+.row
+  display grid
+  grid-template-columns 200px repeat(6,0.2fr) 0.4fr repeat(3,0.2fr) 1fr
+  gap 8px
+  height 33px
+  align-items center
+
+.playerCell
+  display flex
+  justify-content flex-start
+  align-items center
+  gap 8px
+.icon
+  width 60px
+  display flex
+  justify-content flex-start
+  align-items center
+  position relative
+  &__line
+    position absolute
+    width 5px
+    height 33px
+    border-top-left-radius 2px
+    border-bottom-left-radius 2px
+    background #3375FF;
+  &__img
+    width 100%
+    border-radius 5px
+.playerInfo
+  display flex
+  flex-direction column
+  gap 4px
+  &__name
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #BBDD00;
+.cell {
+  text-align center
+}
