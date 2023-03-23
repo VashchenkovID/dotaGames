@@ -7,12 +7,7 @@ import MatchesContainer from 'src/pages/Matches/MatchesContainer';
 import ViewMatchContainer from 'src/pages/ViewMatch/ViewMatchContainer';
 import { useAppDispatch } from 'src/hooks/useAppDispatch';
 import { fetchInit } from 'src/redux/features/init/InitActions';
-import { useAppSelector } from 'src/hooks/useAppSelector';
-import {
-  selectInitHeroes,
-  selectInitItems,
-  selectInitRegions,
-} from 'src/redux/features/init/InitSelectors';
+
 
 export const publicRoutes: Array<IRouteItem> = [
   {

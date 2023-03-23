@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import cakesApi from 'src/api/requests/cakesApi';
 import initApi from 'src/api/requests/initApi';
 
 export const fetchInit = createAsyncThunk(

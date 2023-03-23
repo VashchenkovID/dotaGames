@@ -19,3 +19,8 @@ export const durationConverter = (duration: number) => {
     } else return time;
   } else return `${Number(minutes).toFixed(0)}:${Number(seconds[1])}`;
 };
+export const converterInThousand = (num: number) => {
+  if (num.toString().length >= 5) {
+    return (num / 1000).toFixed(1) + 'k';
+  } else return num.toString();
+};

@@ -52,6 +52,7 @@ export interface PlayerModel {
   item_4: number;
   item_5: number;
   item_uses: {};
+  item_neutral: number;
   kill_streaks: {};
   killed: {};
   killed_by: {};

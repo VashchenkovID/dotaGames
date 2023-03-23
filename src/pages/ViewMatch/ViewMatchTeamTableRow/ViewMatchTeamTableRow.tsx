@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { PlayerModel } from 'src/api/models/PlayerModel';
 import { useAppSelector } from 'src/hooks/useAppSelector';
 import {
@@ -6,15 +6,18 @@ import {
   selectInitItems,
 } from 'src/redux/features/init/InitSelectors';
 import styles from './ViewMatchTeamTableRow.styl';
+import cn from 'classnames';
+import { converterInThousand } from 'src/utils/functions';
+import ViewMatchTeamTableRowBackpack from 'src/pages/ViewMatch/ViewMatchTeamTableRowBackpack/ViewMatchTeamTableRowBackpack';
 
 interface IComponentProps {
   player: PlayerModel;
 }
 
 const ViewMatchTeamTableRow: React.FC<IComponentProps> = ({ player }) => {
-  const items = useAppSelector(selectInitItems);
   const heroes = useAppSelector(selectInitHeroes);
   const url = process.env.REACT_APP_API_URL_IMAGE;
+  const items = useAppSelector(selectInitItems);
 
   const heroLogo: any = useMemo(() => {
     if (heroes && player.hero_id) {
@@ -23,6 +26,24 @@ const ViewMatchTeamTableRow: React.FC<IComponentProps> = ({ player }) => {
       );
     } else return undefined;
   }, [heroes, player.hero_id]);
+
+  const backpackItems = useMemo(() => {
+    return {
+      items: [
+        player.item_0,
+        player.item_1,
+        player.item_2,
+        player.item_3,
+        player.item_4,
+        player.item_5,
+      ],
+      backpack: [player.backpack_0, player.backpack_1, player.backpack_2],
+      neutral: player.item_neutral,
+    };
+  }, [player]);
+
+  const width = window.innerWidth;
+
   return (
     <div className={styles.row}>
       <div className={styles.playerCell}>
@@ -34,27 +55,50 @@ const ViewMatchTeamTableRow: React.FC<IComponentProps> = ({ player }) => {
           />
         </div>
         <div className={styles.playerInfo}>
-          <div className={styles.playerInfo__name}>{player.name}</div>
+          <div className={styles.playerInfo__name}>{player.personaname}</div>
           <div className={styles.playerInfo__hero}>
             {heroLogo?.localized_name}
           </div>
         </div>
       </div>
       <div className={styles.cell}>{player.level}</div>
-      <div className={styles.cell}>{player.kills}</div>
-      <div className={styles.cell}>{player.deaths}</div>
+      <div className={cn(styles.cell, styles.kills)}>{player.kills}</div>
+      <div className={cn(styles.cell, styles.deaths)}>{player.deaths}</div>
       <div className={styles.cell}>{player.assists}</div>
       <div className={styles.cell}>
         {player.last_hits}/{player.denies}
       </div>
-      {/*Если длина больше или равна 5 прибавить k и округлить до 1 десятой*/}
-      <div className={styles.cell}>{player.net_worth}</div>
-      <div className={styles.cell}>
-        {player.total_gold}/{player.total_xp}
+      {width > 1450 && (
+        <div className={cn(styles.cell, styles.netWorth)}>
+          {converterInThousand(player.net_worth)}
+        </div>
+      )}
+      {width > 1450 && (
+        <div className={styles.cell}>
+          {converterInThousand(player.total_gold)} /{' '}
+          {converterInThousand(player.total_xp)}
+        </div>
+      )}
+      {width > 1450 && (
+        <div className={styles.cell}>
+          {converterInThousand(player.hero_damage)}
+        </div>
+      )}
+      {width > 1450 && (
+        <div className={styles.cell}>
+          {converterInThousand(player.tower_damage)}
+        </div>
+      )}
+      {width > 1450 && (
+        <div className={styles.cell}>
+          {converterInThousand(player.hero_healing)}
+        </div>
+      )}
+      <div>
+        {items && (
+          <ViewMatchTeamTableRowBackpack backpackItems={backpackItems} />
+        )}
       </div>
-      <div className={styles.cell}>{player.hero_damage}</div>
-      <div className={styles.cell}>{player.tower_damage}</div>
-      <div className={styles.cell}>{player.hero_healing}</div>
     </div>
   );
 };

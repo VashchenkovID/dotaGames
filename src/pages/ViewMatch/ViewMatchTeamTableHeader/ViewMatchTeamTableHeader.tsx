@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { WinnerSide } from 'src/components/WinnerBadge/WinnerBadge';
 import { TeamModel } from 'src/api/models/TeamModel';
 import StatusTeamBadge, {
@@ -31,6 +31,17 @@ const ViewMatchTeamTableHeader: React.FC<IComponentProps> = ({
     { id: 10, title: 'hh', color: '' },
     { id: 11, title: 'Предметы / Бафы', color: '' },
   ];
+  const subHeaderItemsPhone = [
+    { id: 0, title: 'игрок', color: '' },
+    { id: 1, title: 'lvl', color: '' },
+    { id: 2, title: 'k', color: '#BBDD00' },
+    { id: 3, title: 'd', color: '#FA7000' },
+    { id: 4, title: 'a', color: '' },
+    { id: 5, title: 'lh/dn', color: '' },
+    { id: 11, title: 'Предметы / Бафы', color: '' },
+  ];
+
+  const width = window.innerWidth;
 
   return (
     <div className={styles.allContainer}>
@@ -43,18 +54,37 @@ const ViewMatchTeamTableHeader: React.FC<IComponentProps> = ({
         <StatusTeamBadge type={isWin ? GameWinner.WIN : GameWinner.LOOSE} />
       </div>
       <div className={styles.subContainer}>
-        {subHeaderItems.map((item, index) => (
-          <div
-            key={`${index}_${item.id}`}
-            className={styles.subContainer__cell}
-            style={{
-              color: item.color,
-              textAlign: index !== 0 ? 'center' : undefined,
-            }}
-          >
-            {item.title}
-          </div>
-        ))}
+        {width && width > 1450
+          ? subHeaderItems.map((item, index) => (
+              <div
+                key={`${index}_${item.id}`}
+                className={styles.subContainer__cell}
+                style={{
+                  color: item.color,
+                  textAlign:
+                    index !== 0 && index !== subHeaderItems.length - 1
+                      ? 'center'
+                      : undefined,
+                }}
+              >
+                {item.title}
+              </div>
+            ))
+          : subHeaderItemsPhone.map((item, index) => (
+              <div
+                key={`${index}_${item.id}`}
+                className={styles.subContainer__cell}
+                style={{
+                  color: item.color,
+                  textAlign:
+                    index !== 0 && index !== subHeaderItemsPhone.length - 1
+                      ? 'center'
+                      : undefined,
+                }}
+              >
+                {item.title}
+              </div>
+            ))}
       </div>
     </div>
   );
