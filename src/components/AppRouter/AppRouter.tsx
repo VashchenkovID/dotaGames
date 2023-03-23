@@ -7,7 +7,7 @@ import MatchesContainer from 'src/pages/Matches/MatchesContainer';
 import ViewMatchContainer from 'src/pages/ViewMatch/ViewMatchContainer';
 import { useAppDispatch } from 'src/hooks/useAppDispatch';
 import { fetchInit } from 'src/redux/features/init/InitActions';
-
+import TeamsContainer from 'src/pages/Teams/TeamsContainer';
 
 export const publicRoutes: Array<IRouteItem> = [
   {
@@ -24,7 +24,7 @@ export const publicRoutes: Array<IRouteItem> = [
   },
   {
     path: PublicRoutesEnum.TEAMS,
-    element: <></>,
+    element: <TeamsContainer />,
   },
   {
     path: PublicRoutesEnum.HEROES,

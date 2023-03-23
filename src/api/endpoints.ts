@@ -9,4 +9,5 @@ export const enum EnpointsEnum {
   AUTHORIZATION_USER = '/user/auth',
   GET_PRO_MATCHES = '/proMatches',
   GET_MATCH = '/matches',
+  GET_TEAMS = '/teams',
 }
