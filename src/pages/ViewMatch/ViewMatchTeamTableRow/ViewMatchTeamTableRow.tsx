@@ -96,7 +96,10 @@ const ViewMatchTeamTableRow: React.FC<IComponentProps> = ({ player }) => {
       )}
       <div>
         {items && (
-          <ViewMatchTeamTableRowBackpack backpackItems={backpackItems} />
+          <ViewMatchTeamTableRowBackpack
+            backpackItems={backpackItems}
+            gold={player.gold}
+          />
         )}
       </div>
     </div>

@@ -3,13 +3,16 @@ import { useAppSelector } from 'src/hooks/useAppSelector';
 import { selectInitItems } from 'src/redux/features/init/InitSelectors';
 import styles from './ViewMatchTeamTableRowBackpack.styl';
 import BackpackIcon from 'src/components/BackpackIcon/BackpackIcon';
+import GoldIcon from 'src/components/GoldIcon/GoldIcon';
 
 interface IComponentProps {
   backpackItems: { items: number[]; backpack: number[]; neutral: number };
+  gold: number;
 }
 
 const ViewMatchTeamTableRowBackpack: React.FC<IComponentProps> = ({
   backpackItems,
+  gold,
 }) => {
   const items = useAppSelector(selectInitItems);
   const url = process.env.REACT_APP_API_URL_IMAGE;
@@ -70,6 +73,10 @@ const ViewMatchTeamTableRowBackpack: React.FC<IComponentProps> = ({
         ) : (
           <div className={styles.voidNeutralCell}></div>
         )}
+      </div>
+      <div className={styles.goldCell}>
+        {gold}
+        <GoldIcon className={styles.goldImg} />
       </div>
     </div>
   );

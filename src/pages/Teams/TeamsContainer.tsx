@@ -60,7 +60,7 @@ const TeamsContainer: React.FC = () => {
   return (
     <div>
       {isLoading && <ScreenLoader />}
-      {!isLoading && (
+      {!isLoading && viewTeams.length > 0 && (
         <Teams
           viewTeams={viewTeams}
           isViewButton={isViewButton}

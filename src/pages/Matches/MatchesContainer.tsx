@@ -43,7 +43,7 @@ const MatchesContainer: React.FC = () => {
           <CircularProgress />
         </div>
       )}
-      {!isLoading && (
+      {!isLoading && viewMatches.length > 0 && (
         <Matches
           viewMatches={viewMatches}
           isViewButton={isViewButton}
