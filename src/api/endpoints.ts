@@ -10,4 +10,5 @@ export const enum EnpointsEnum {
   GET_PRO_MATCHES = '/proMatches',
   GET_MATCH = '/matches',
   GET_TEAMS = '/teams',
+  GET_TEAM_BY_ID = '/teams',
 }

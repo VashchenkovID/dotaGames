@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import useRequest from 'src/hooks/useRequest';
 import teamsApi from 'src/api/requests/teamsApi';
 import { TeamFullModel } from 'src/api/models/TeamModel';
@@ -23,6 +23,28 @@ const TeamsContainer: React.FC = () => {
       }
     },
   );
+
+  const maxParams = useMemo(() => {
+    if (teams && teams.length > 0) {
+      return {
+        maxRating: teams
+          .map((team) => team.rating)
+          .reduce((x, y) => Math.max(x, y)),
+        maxWins: teams
+          .map((team) => team.wins)
+          .reduce((x, y) => Math.max(x, y)),
+        maxLosses: teams
+          .map((team) => team.losses)
+          .reduce((x, y) => Math.max(x, y)),
+      };
+    } else
+      return {
+        maxRating: 0,
+        maxWins: 0,
+        maxLosses: 0,
+      };
+  }, [teams]);
+
   useEffect(() => {
     fetchTeamsList();
   }, []);
@@ -43,6 +65,7 @@ const TeamsContainer: React.FC = () => {
           viewTeams={viewTeams}
           isViewButton={isViewButton}
           setIsMore={setIsMore}
+          maxParams={maxParams}
         />
       )}
     </div>

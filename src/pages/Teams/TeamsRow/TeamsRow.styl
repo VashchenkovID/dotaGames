@@ -1,0 +1,65 @@
+meter {
+  --background: mso-level-inherit;
+  --optimum: #FA7000;
+  --sub-optimum: #BBDD00;
+  --sub-sub-optimum:  #7540F0;
+  --high: #7540F0;
+  /* The gray background in Firefox */
+  background: var(--background);
+  display: block;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+/* The gray background in Chrome, etc. */
+meter::-webkit-meter-bar {
+  background: var(--background);
+}
+
+/* The green (optimum) bar in Firefox */
+meter:-moz-meter-optimum::-moz-meter-bar {
+  background: var(--optimum);
+}
+
+/* The green (optimum) bar in Chrome etc. */
+meter::-webkit-meter-optimum-value {
+  background: var(--optimum);
+}
+
+/* The yellow (sub-optimum) bar in Firefox */
+meter:-moz-meter-sub-optimum::-moz-meter-bar {
+  background: var(--sub-optimum);
+}
+
+/* The yellow (sub-optimum) bar in Chrome etc. */
+meter::-webkit-meter-suboptimum-value {
+  background: var(--sub-optimum);
+}
+
+/* The red (even less good) bar in Firefox */
+meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+  background: var(--sub-sub-optimum);
+}
+
+/* The red (even less good) bar in Chrome etc. */
+meter::-webkit-meter-even-less-good-value {
+  background: var(--sub-sub-optimum);
+}
+
+.container
+  display grid
+  grid-template-columns 0.2fr 1.4fr repeat(3,1fr)
+  gap 16px
+  padding 20px
+  align-items center
+.teamName
+  display: flex;
+  align-items center
+  gap 8px
+  &__img
+    width 40px
+  &__name
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #BBDD00;
