@@ -24,8 +24,9 @@ const ViewMatch: React.FC<IComponentProps> = ({ match }) => {
       <div className={styles.downloadBtn}>
         <a className={styles.link} href={match.replay_url}>
           <Button size={'small'} variant="contained" color="primary">
-            <IconButton className={styles.download} size={'small'}>
-              <CloudDownload /> &nbsp; Загрузить
+            <IconButton size={'small'}>
+              <CloudDownload className={styles.download} /> &nbsp;
+              <span className={styles.download}>Загрузить</span>
             </IconButton>
           </Button>
         </a>

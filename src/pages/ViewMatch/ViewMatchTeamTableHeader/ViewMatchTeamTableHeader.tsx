@@ -48,8 +48,8 @@ const ViewMatchTeamTableHeader: React.FC<IComponentProps> = ({
       <div className={styles.container}>
         <div>{type}</div>
         <div className={styles.team}>
-          <img className={styles.img} alt={'err'} src={team.logo_url} />
-          <span>{team.name}</span>
+          <img className={styles.img} alt={'err'} src={team?.logo_url} />
+          <span>{team?.name}</span>
         </div>
         <StatusTeamBadge type={isWin ? GameWinner.WIN : GameWinner.LOOSE} />
       </div>
