@@ -1,0 +1,47 @@
+.container
+  display grid
+  grid-template-columns repeat(4,1fr)
+  gap 24px
+  cursor pointer
+  align-items center
+.cellId
+  display flex
+  flex-direction column
+  &__id
+    color #BBDD00
+    font-size 18px
+.badge {
+  border-radius 30px
+  padding 5px 15px
+  background: rgba(250, 112, 0, 0.25);
+  color: #FA7000;
+  max-height 20px
+  display flex
+  align-items center
+  justify-content center
+  text-align center
+}
+
+.badge.win {
+  background: rgba(187, 221, 0, 0.25);
+  color: #BBDD00;
+}
+.opposingCell
+    display flex
+    gap 8px
+    align-items center
+    &__img
+      width 60px
+    &__name
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 29px;
+      color: #BBDD00;
+.scoreCell{
+  display flex
+  gap 8px
+  align-items center
+  justify-content center
+}
+
+

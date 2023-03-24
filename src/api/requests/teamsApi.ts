@@ -10,12 +10,12 @@ import {
 
 export default {
   fetchTeams: (): Promise<TeamFullModel[]> => get(EnpointsEnum.GET_TEAMS),
-  fetchTeamById: (id: number): Promise<TeamByIdModel> =>
+  fetchTeamById: (id: string): Promise<TeamByIdModel> =>
     get(`${EnpointsEnum.GET_TEAM_BY_ID}/${id}`),
-  fetchTeamByIdMatches: (id: number): Promise<TeamByIdMatchesModel> =>
+  fetchTeamByIdMatches: (id: string): Promise<TeamByIdMatchesModel[]> =>
     get(`${EnpointsEnum.GET_TEAM_BY_ID}/${id}/matches`),
-  fetchTeamByIdPlayers: (id: number): Promise<TeamByIdPlayersModel> =>
+  fetchTeamByIdPlayers: (id: string): Promise<TeamByIdPlayersModel[]> =>
     get(`${EnpointsEnum.GET_TEAM_BY_ID}/${id}/players`),
-  fetchTeamByIdHeroes: (id: number): Promise<TeamByIdHeroesModel> =>
+  fetchTeamByIdHeroes: (id: string): Promise<TeamByIdHeroesModel[]> =>
     get(`${EnpointsEnum.GET_TEAM_BY_ID}/${id}/heroes`),
 };

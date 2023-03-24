@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { WinnerSide } from 'src/components/WinnerBadge/WinnerBadge';
 import { TeamModel } from 'src/api/models/TeamModel';
 import StatusTeamBadge, {

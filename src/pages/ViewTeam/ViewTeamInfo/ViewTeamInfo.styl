@@ -1,0 +1,90 @@
+.container
+  padding 20px
+  background rgba(16, 0, 37, 0.4)
+  border-radius 10px
+  border 1px solid rgba(16, 0, 37, 0.5)
+  display flex
+  flex-direction column
+  gap:16px
+.title
+  display flex
+  gap 16px
+  align-items center
+  &__img
+    width 140px
+  &__name
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 29px;
+    color: #BBDD00;
+.stats
+  display flex
+  justify-content space-between
+  align-items center
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  &__rating
+    color #EECD00
+  &__wins
+    color #BBDD00
+  &__losses
+    color #FA7000
+.lastMatch
+  background: rgba(16,0,37,0.6);
+  padding 20px
+  border-radius 10px
+  display flex
+  flex-direction column
+  gap 16px
+  &__stats
+    display flex
+    gap 8px
+    align-items center
+  &__id
+    color #BBDD00
+    font-size 18px
+  &__header
+    display grid
+    grid-template-columns repeat(3,1fr)
+    gap 16px
+    align-items center
+    text-transform uppercase
+  &__row
+    display grid
+    grid-template-columns repeat(3,1fr)
+    gap 16px
+    align-items center
+    &__cell
+      text-align center
+  &__title
+    display flex
+    gap 16px
+    align-items center
+    justify-content center
+    &__img
+      width 60px
+    &__name
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 29px;
+      color: #BBDD00;
+.score
+  font-size 18px
+  &__radiant
+    color #BBDD00
+  &__dire
+    color #FA7000
+
+.badge {
+  border-radius 30px
+  padding 5px 15px
+  max-width 80px
+  background: rgba(250, 112, 0, 0.25);
+  color: #FA7000;
+}
+
+.badge.win {
+  background: rgba(187, 221, 0, 0.25);
+  color: #BBDD00;
+}

@@ -1,0 +1,41 @@
+.container
+  display flex
+  flex-direction column
+  gap 4px
+  padding 20px
+  background rgba(16, 0, 37, 0.4)
+  border-radius 10px
+  border 1px solid rgba(16, 0, 37, 0.5)
+  &__title
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 58px;
+    text-transform: uppercase;
+    background: linear-gradient(268.55deg, #3f51b5 0%, #d9ddff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-shadow: 0px 8px 16px rgba(16, 0, 37, 0.15);
+  &__header
+    display grid
+    grid-template-columns repeat(3,1fr)
+    gap 24px
+    text-transform uppercase
+  &__rows
+    margin-top 16px
+    display flex
+    flex-direction column
+    gap 16px
+  &__row
+    display grid
+    grid-template-columns repeat(3,1fr)
+    gap 24px
+    cursor pointer
+    &__nick
+      color #BBDD00
+      font-size 20px
+    &__cell
+      text-align center
+
+

@@ -6,6 +6,7 @@ export interface TeamByIdModel {
   last_match_time: number;
   name: string;
   tag: string;
+  logo_url: string;
 }
 
 export interface TeamByIdMatchesModel {
@@ -34,7 +35,7 @@ export interface TeamByIdPlayersModel {
 
 export interface TeamByIdHeroesModel {
   hero_id: number;
-  name: string;
+  localized_name: string;
   games_played: number;
   wins: number;
 }
