@@ -12,7 +12,7 @@ interface IComponentProps {
   index: number;
 }
 
-const MatchesRow: React.FC<IComponentProps> = ({ item, index }) => {
+const MatchesRow: React.FC<IComponentProps> = ({ item }) => {
   const navigate = useNavigate();
   const agoTime = useMemo(() => {
     if (item.start_time) {
@@ -58,10 +58,20 @@ const MatchesRow: React.FC<IComponentProps> = ({ item, index }) => {
         </div>
       </div>
       <div className={styles.cellCenter}>{duration}</div>
-      <div className={cn(styles.rowHover, styles.cellCenter)}>
+      <div
+        onClick={() =>
+          navigate(`${PublicRoutesEnum.TEAM}/${item.radiant_team_id}`)
+        }
+        className={cn(styles.rowHover, styles.cellCenter)}
+      >
         {item.radiant_name}
       </div>
-      <div className={cn(styles.rowHover, styles.cellCenter)}>
+      <div
+        onClick={() =>
+          navigate(`${PublicRoutesEnum.TEAM}/${item.dire_team_id}`)
+        }
+        className={cn(styles.rowHover, styles.cellCenter)}
+      >
         {item.dire_name}
       </div>
     </div>

@@ -11,4 +11,5 @@ export const enum EnpointsEnum {
   GET_MATCH = '/matches',
   GET_TEAMS = '/teams',
   GET_TEAM_BY_ID = '/teams',
+  GET_PLAYERS = '/proPlayers',
 }

@@ -9,6 +9,7 @@ import { useAppDispatch } from 'src/hooks/useAppDispatch';
 import { fetchInit } from 'src/redux/features/init/InitActions';
 import TeamsContainer from 'src/pages/Teams/TeamsContainer';
 import ViewTeamContainer from 'src/pages/ViewTeam/ViewTeamContainer';
+import PlayersContainer from 'src/pages/Players/PlayersContainer';
 
 export const publicRoutes: Array<IRouteItem> = [
   {
@@ -44,10 +45,6 @@ export const publicRoutes: Array<IRouteItem> = [
     element: <></>,
   },
   {
-    path: `${PublicRoutesEnum.PLAYER}/:id`,
-    element: <></>,
-  },
-  {
     path: `${PublicRoutesEnum.LEAGUE}/:id`,
     element: <></>,
   },
@@ -57,7 +54,7 @@ export const publicRoutes: Array<IRouteItem> = [
   },
   {
     path: `${PublicRoutesEnum.PLAYERS}`,
-    element: <></>,
+    element: <PlayersContainer />,
   },
   { path: PublicRoutesEnum.INFO_PAGE, element: <div></div> },
 ];

@@ -1,12 +1,15 @@
 import React from 'react';
 import styles from './ViewTeamPlayers.styl';
 import { TeamByIdPlayersModel } from 'src/api/models/TeamByIdModel';
+import { useNavigate } from 'react-router-dom';
+import { PublicRoutesEnum } from 'src/router';
 
 interface IComponentProps {
   players: TeamByIdPlayersModel[];
 }
 
 const ViewTeamPlayers: React.FC<IComponentProps> = ({ players }) => {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <span className={styles.container__title}>Участники</span>
@@ -21,6 +24,9 @@ const ViewTeamPlayers: React.FC<IComponentProps> = ({ players }) => {
             players.map((player, index) => (
               <div
                 key={`${player.account_id}_${index}`}
+                onClick={() =>
+                  navigate(`${PublicRoutesEnum.PLAYER}/${player.account_id}`)
+                }
                 className={styles.container__row}
               >
                 <div className={styles.container__row__nick}>{player.name}</div>
