@@ -5,6 +5,7 @@ import {
   TeamByIdMatchesModel,
   TeamByIdModel,
 } from 'src/api/models/TeamByIdModel';
+import { differenceInMinutes } from 'date-fns';
 
 interface IComponentProps {
   team: TeamByIdModel;
@@ -32,24 +33,33 @@ const ViewTeamInfo: React.FC<IComponentProps> = ({ team, lastMatch }) => {
   }, [lastMatch]);
 
   const agoTime = useMemo(() => {
-    if (lastMatch && lastMatch.start_time) {
-      const result = new Date().getTime() - lastMatch.start_time;
-      const days = new Date().getDate() - new Date(result).getDate();
-      if (days === 0) {
-        const hours = new Date(result).getHours();
-        if (hours === 0) {
-          const minutes = new Date(result).getMinutes();
-          if (minutes === 0) {
-            const seconds = new Date(result).getSeconds();
-            return `${seconds} секунд назад`;
-          }
-          return `${minutes} минут назад`;
+    if (lastMatch.start_time) {
+      const realStart = new Date(
+        Number(`${lastMatch.start_time.toString()}000`),
+      );
+      const result = differenceInMinutes(new Date(), new Date(realStart));
+      if (result > 60) {
+        if (result === 60 * 24) {
+          return `День назад`;
         }
-        return `${hours} часов назад`;
+        if (result > 60 * 24) {
+          return `${(result / 60 / 24).toFixed(0)} дней назад`;
+        }
+        if (Number((result / 60).toFixed(0)) === 1) {
+          return `Час назад`;
+        }
+        if (Number((result / 60).toFixed(0)) < 5) {
+          return `${(result / 60).toFixed(0)} часа назад`;
+        }
+
+        if (Number((result / 60).toFixed(0)) === 24) {
+          return `День назад`;
+        }
+        return `${(result / 60).toFixed(0)} часов назад`;
       }
-      return `${days} дней назад`;
+      return `${result} минут назад`;
     } else return null;
-  }, [lastMatch]);
+  }, [lastMatch.start_time]);
 
   return (
     <div className={styles.container}>

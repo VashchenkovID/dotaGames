@@ -15,7 +15,6 @@ const ViewTeamHeroesRow: React.FC<IComponentProps> = ({ hero }) => {
       return Object.values(heroes).find((h: any) => hero.hero_id === h?.id);
     } else return undefined;
   }, [heroes]);
-  console.log(hero);
   return (
     <div className={styles.container}>
       <div className={styles.hero}>

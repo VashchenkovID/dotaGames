@@ -10,6 +10,7 @@ import { fetchInit } from 'src/redux/features/init/InitActions';
 import TeamsContainer from 'src/pages/Teams/TeamsContainer';
 import ViewTeamContainer from 'src/pages/ViewTeam/ViewTeamContainer';
 import PlayersContainer from 'src/pages/Players/PlayersContainer';
+import LeaguesContainer from 'src/pages/Leagues/LeaguesContainer';
 
 export const publicRoutes: Array<IRouteItem> = [
   {
@@ -50,7 +51,7 @@ export const publicRoutes: Array<IRouteItem> = [
   },
   {
     path: `${PublicRoutesEnum.LEAGUES}`,
-    element: <></>,
+    element: <LeaguesContainer />,
   },
   {
     path: `${PublicRoutesEnum.PLAYERS}`,
