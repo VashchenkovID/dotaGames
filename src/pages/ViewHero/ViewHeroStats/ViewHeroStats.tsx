@@ -73,7 +73,9 @@ const ViewHeroStats: React.FC<IComponentProps> = ({ hero }) => {
         </div>
       </div>
       <div className={styles.hero__rightSide}>
-        <span>{hero.lore}</span>
+        <SimpleBar style={{ maxHeight: 'calc(100vh - 320px)', minWidth:400 }}>
+          <span>{hero.lore}</span>
+        </SimpleBar>
       </div>
     </div>
   );

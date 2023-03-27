@@ -10,9 +10,9 @@ interface IComponentProps {
 const ViewHeroItems: React.FC<IComponentProps> = ({ hero }) => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Рекомендуемые предметы</h1>
-      <SimpleBar style={{ maxHeight: 'calc(100vh - 320px)', maxWidth: 'auto' }}>
-        <section>
+      <h1 className={styles.title}>Популярные предметы</h1>
+      <SimpleBar style={{ maxHeight: 'calc(100vh - 320px)' }}>
+        <section className={styles.rows}>
           <ViewHeroItemsRow
             items={hero.items?.start_game_items
               ?.filter(function (value, index, self) {
