@@ -25,8 +25,10 @@ export const durationConverter = (duration: number) => {
     } else return time;
   } else return `${seconds.join(':')}`;
 };
-export const converterInThousand = (num: number) => {
-  if (num.toString().length >= 5) {
-    return (num / 1000).toFixed(1) + 'k';
-  } else return num.toString();
+export const converterInThousand = (num: number | null) => {
+  if (num) {
+    if (num.toString().length >= 5) {
+      return `${(num / 1000).toFixed(1)}k`;
+    } else return num.toString();
+  } else return '-';
 };

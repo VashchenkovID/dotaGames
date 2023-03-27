@@ -7,13 +7,15 @@ import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { PublicRoutesEnum } from 'src/router';
 import { differenceInMinutes } from 'date-fns';
+import { TeamFullModel } from 'src/api/models/TeamModel';
 
 interface IComponentProps {
   item: ProMatchModel;
   index: number;
+  teams?: TeamFullModel[];
 }
 
-const MatchesRow: React.FC<IComponentProps> = ({ item }) => {
+const MatchesRow: React.FC<IComponentProps> = ({ item, teams }) => {
   const navigate = useNavigate();
   const agoTime = useMemo(() => {
     if (item.start_time) {
@@ -39,6 +41,15 @@ const MatchesRow: React.FC<IComponentProps> = ({ item }) => {
     } else return null;
   }, [item.start_time]);
 
+  //Для лиг
+  const teamsNames = useMemo(() => {
+    if (teams) {
+      const radiant = teams.find((tm) => tm.team_id === item.radiant_team_id);
+      const dire = teams.find((tm) => tm.team_id === item.dire_team_id);
+      return { radiant: radiant.name, dire: dire.name };
+    } else return { radiant: undefined, dire: undefined };
+  }, [teams]);
+
   const duration = useMemo(() => {
     return durationConverter(item.duration);
   }, [item.duration]);
@@ -55,7 +66,7 @@ const MatchesRow: React.FC<IComponentProps> = ({ item }) => {
           <span className={styles.rowHover}>{agoTime}</span>/
           <Tooltip arrow placement={'top'} title={item.league_name}>
             <div className={cn(styles.league, styles.rowHover)}>
-              {item.league_name.length > 16
+              {item.league_name && item.league_name.length > 16
                 ? `${item.league_name.slice(0, 13)}...`
                 : item.league_name}
             </div>
@@ -69,7 +80,10 @@ const MatchesRow: React.FC<IComponentProps> = ({ item }) => {
         }
         className={cn(styles.rowHover, styles.cellCenter)}
       >
-        {item.radiant_name}
+        {item.radiant_name ||
+          item.radiant_team_name ||
+          teamsNames.radiant ||
+          '-'}
       </div>
       <div
         onClick={() =>
@@ -77,7 +91,7 @@ const MatchesRow: React.FC<IComponentProps> = ({ item }) => {
         }
         className={cn(styles.rowHover, styles.cellCenter)}
       >
-        {item.dire_name}
+        {item.dire_name || item.dire_team_name || teamsNames.dire || '-'}
       </div>
     </div>
   );
