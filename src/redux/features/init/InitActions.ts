@@ -6,6 +6,7 @@ export const fetchInit = createAsyncThunk(
   async (_, createAsyncThunk) => {
     try {
       const models = [
+        await initApi.fetchInit('patchnotes'),
         await initApi.fetchInit('items'),
         await initApi.fetchInit('heroes'),
         await initApi.fetchInit('region'),

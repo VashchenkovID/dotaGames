@@ -112,8 +112,6 @@ async function getHeaders(options: ApiRequestOptions): Promise<Headers> {
     });
 
     if (isStringWithValue(token)) {
-        //TODO временно передавать логин
-        // headers.append('Authorization', `Bearer ${'admin'}`);
         headers.append('Authorization', `Bearer ${token}`);
     }
 
