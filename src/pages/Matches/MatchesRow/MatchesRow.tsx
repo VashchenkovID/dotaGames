@@ -46,7 +46,7 @@ const MatchesRow: React.FC<IComponentProps> = ({ item, teams }) => {
     if (teams) {
       const radiant = teams.find((tm) => tm.team_id === item.radiant_team_id);
       const dire = teams.find((tm) => tm.team_id === item.dire_team_id);
-      return { radiant: radiant.name, dire: dire.name };
+      return { radiant: radiant?.name, dire: dire?.name };
     } else return { radiant: undefined, dire: undefined };
   }, [teams]);
 
@@ -55,14 +55,21 @@ const MatchesRow: React.FC<IComponentProps> = ({ item, teams }) => {
   }, [item.duration]);
   return (
     <div className={styles.container}>
-      <div
-        onClick={() => {
-          navigate(`${PublicRoutesEnum.MATCH}/${item.match_id}`);
-        }}
-        className={styles.titleCell}
-      >
-        <span className={styles.title}>{item.match_id}</span>
-        <div className={cn(styles.subTitle, styles.rowHover)}>
+      <div className={styles.titleCell}>
+        <span
+          onClick={() => {
+            navigate(`${PublicRoutesEnum.MATCH}/${item.match_id}`);
+          }}
+          className={styles.title}
+        >
+          {item.match_id}
+        </span>
+        <div
+          onClick={() => {
+            navigate(`${PublicRoutesEnum.LEAGUE}/${item.leagueid}`);
+          }}
+          className={cn(styles.subTitle, styles.rowHover)}
+        >
           <span className={styles.rowHover}>{agoTime}</span>/
           <Tooltip arrow placement={'top'} title={item.league_name}>
             <div className={cn(styles.league, styles.rowHover)}>
