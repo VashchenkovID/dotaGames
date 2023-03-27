@@ -50,6 +50,9 @@ const MatchesContainer: React.FC = () => {
           setIsMore={setIsMore}
         />
       )}
+      {!isLoading && viewMatches.length === 0 && (
+        <span>Информация о матчах отсутствует</span>
+      )}
     </div>
   );
 };

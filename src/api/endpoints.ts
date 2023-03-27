@@ -14,4 +14,6 @@ export const enum EnpointsEnum {
   GET_PLAYERS = '/proPlayers',
   GET_LEAGUES = '/leagues',
   GET_HEROES = '/heroes',
+  GET_HERO_STATS = '/heroStats',
+  GET_HERO_ITEMS = 'itemPopularity',
 }

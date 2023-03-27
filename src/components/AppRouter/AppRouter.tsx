@@ -12,6 +12,7 @@ import ViewTeamContainer from 'src/pages/ViewTeam/ViewTeamContainer';
 import PlayersContainer from 'src/pages/Players/PlayersContainer';
 import LeaguesContainer from 'src/pages/Leagues/LeaguesContainer';
 import HeroesContainer from 'src/pages/Heroes/HeroesContainer';
+import ViewHeroContainer from 'src/pages/ViewHero/ViewHeroContainer';
 
 export const publicRoutes: Array<IRouteItem> = [
   {
@@ -44,7 +45,7 @@ export const publicRoutes: Array<IRouteItem> = [
   },
   {
     path: `${PublicRoutesEnum.HERO}/:id`,
-    element: <></>,
+    element: <ViewHeroContainer />,
   },
   {
     path: `${PublicRoutesEnum.LEAGUE}/:id`,
