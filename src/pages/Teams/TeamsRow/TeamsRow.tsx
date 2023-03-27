@@ -20,7 +20,12 @@ const TeamsRow: React.FC<IComponentProps> = ({ team, position, maxParams }) => {
     >
       <div>{position + 1}st</div>
       <div className={styles.teamName}>
-        <img className={styles.teamName__img} src={`${team.logo_url}`} />
+        {team.logo_url && (
+          <img
+            className={styles.teamName__img}
+            src={`${team.logo_url}`}
+          />
+        )}
         <span className={styles.teamName__name}>{team.name}</span>
       </div>
       <div>
