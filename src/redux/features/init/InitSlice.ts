@@ -1,9 +1,21 @@
 import { RequestStatusEnum } from 'src/utils/enum';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchShopItems } from 'src/redux/features/shop/actions';
 import { fetchInit } from 'src/redux/features/init/InitActions';
+import { InitHeroModel } from 'src/api/models/InitHeroModel';
 
-const initialState: any = {
+export interface HeroesType {
+  [key: string]: InitHeroModel;
+}
+
+interface InitialStateType {
+  heroes: HeroesType;
+  items: any;
+  regions: any;
+  status: RequestStatusEnum;
+  error: string | null;
+}
+
+const initialState: InitialStateType = {
   items: null,
   heroes: null,
   regions: null,
@@ -20,7 +32,9 @@ const initSlice = createSlice({
       fetchInit.fulfilled,
       (state, action: PayloadAction<any>) => {
         state.items = action.payload[0]?.value;
-        state.heroes = action.payload[1]?.value;
+        state.heroes = action.payload[1]?.value as {
+          [key: string]: InitHeroModel;
+        };
         state.regions = Object.values(action.payload[2]?.value).map(
           (reg, index) => {
             return { id: index, name: reg };

@@ -18,3 +18,9 @@ export enum HeaderIdEnum {
   LEAGUES = 'leagues',
   PLAYERS = 'players',
 }
+
+export enum PrimaryAttrs {
+  AGI = 'agi',
+  INT = 'int',
+  STR = 'str',
+}
