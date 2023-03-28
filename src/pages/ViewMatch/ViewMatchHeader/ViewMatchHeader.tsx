@@ -10,6 +10,7 @@ import { durationConverter } from 'src/utils/functions';
 import { useAppSelector } from 'src/hooks/useAppSelector';
 import { selectInitRegions } from 'src/redux/features/init/InitSelectors';
 import { differenceInMinutes } from 'date-fns';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   match: ProMatchFullModel;
@@ -19,6 +20,7 @@ const cx = cn.bind(styles);
 
 const ViewMatchHeader: React.FC<IComponentProps> = ({ match }) => {
   const regions = useAppSelector(selectInitRegions);
+  const { width } = useResize();
 
   const region = useMemo(() => {
     if (regions && regions.length > 0) {
@@ -62,7 +64,11 @@ const ViewMatchHeader: React.FC<IComponentProps> = ({ match }) => {
     } else return null;
   }, [match.start_time]);
   return (
-    <section className={styles.container}>
+    <section
+      className={cx(styles.container, {
+        smallScreen: width <= 800,
+      })}
+    >
       <div className={styles.leftSide}>
         <WinnerBadge
           winner={match.radiant_win ? WinnerSide.RADIANT : WinnerSide.DIRE}

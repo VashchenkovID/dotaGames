@@ -1,16 +1,21 @@
 import React from 'react';
 import { TeamFullModel } from 'src/api/models/TeamModel';
 import styles from './TeamsRow.styl';
+import cn from 'classnames/bind';
 import { useNavigate } from 'react-router-dom';
 import { PublicRoutesEnum } from 'src/router';
+import { useResize } from 'src/hooks/useResize';
 interface IComponentProps {
   team: TeamFullModel;
   position: number;
   maxParams: { maxRating: number; maxWins: number; maxLosses: number };
 }
 
+const cx = cn.bind(styles);
+
 const TeamsRow: React.FC<IComponentProps> = ({ team, position, maxParams }) => {
   const navigate = useNavigate();
+  const { width } = useResize();
   return (
     <div
       onClick={() => {
@@ -19,14 +24,21 @@ const TeamsRow: React.FC<IComponentProps> = ({ team, position, maxParams }) => {
       className={styles.container}
     >
       <div>{position + 1}st</div>
-      <div className={styles.teamName}>
+      <div
+        className={cx(styles.teamName, {
+          smallScreen: width <= 1030,
+        })}
+      >
         {team.logo_url && (
-          <img
-            className={styles.teamName__img}
-            src={`${team.logo_url}`}
-          />
+          <img className={styles.teamName__img} src={`${team.logo_url}`} />
         )}
-        <span className={styles.teamName__name}>{team.name}</span>
+        <span
+          className={cx(styles.teamName__name, {
+            smallScreen: width <= 1030,
+          })}
+        >
+          {team.name}
+        </span>
       </div>
       <div>
         <span>{team.rating}</span>

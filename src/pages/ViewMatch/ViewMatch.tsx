@@ -8,12 +8,14 @@ import { CloudDownload } from '@material-ui/icons';
 import ViewMatchTeamTable from 'src/pages/ViewMatch/ViewMatchTeamTable/ViewMatchTeamTable';
 import { WinnerSide } from 'src/components/WinnerBadge/WinnerBadge';
 import SimpleBar from 'simplebar-react';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   match: ProMatchFullModel;
 }
 
 const ViewMatch: React.FC<IComponentProps> = ({ match }) => {
+  const { width } = useResize();
   return (
     <div className={styles.container}>
       <PageTitle
@@ -31,7 +33,13 @@ const ViewMatch: React.FC<IComponentProps> = ({ match }) => {
           </Button>
         </a>
       </div>
-      <SimpleBar style={{ maxHeight: 'calc(100vh - 420px)' }}>
+      <SimpleBar
+        style={
+          width > 1000
+            ? { maxHeight: 'calc(100vh - 420px)' }
+            : { maxHeight: 'calc(100vh - 520px)' }
+        }
+      >
         <div className={styles.tables}>
           <ViewMatchTeamTable
             players={match.players.filter((pl) => pl.isRadiant)}

@@ -11,7 +11,14 @@
     display grid
     grid-template-columns 1fr 1fr
     gap 24px
-    &__column
-      display flex
-      flex-direction column
-      gap 16px
+  &__body.smallScreen
+    display flex
+    flex-direction column
+    gap 24px
+.simpleBar
+  height calc(100vh - 320px)
+  padding-right 10px
+.column
+  display flex
+  flex-direction column
+  gap 24px

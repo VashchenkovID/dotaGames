@@ -3,11 +3,12 @@ import { ProMatchModel } from 'src/api/models/ProMatchModel';
 import styles from './MatchesRow.styl';
 import { durationConverter } from 'src/utils/functions';
 import { Tooltip } from '@material-ui/core';
-import cn from 'classnames';
+import cn from 'classnames/bind';
 import { useNavigate } from 'react-router-dom';
 import { PublicRoutesEnum } from 'src/router';
 import { differenceInMinutes } from 'date-fns';
 import { TeamFullModel } from 'src/api/models/TeamModel';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   item: ProMatchModel;
@@ -15,8 +16,13 @@ interface IComponentProps {
   teams?: TeamFullModel[];
 }
 
+const cx = cn.bind(styles);
+
 const MatchesRow: React.FC<IComponentProps> = ({ item, teams }) => {
   const navigate = useNavigate();
+
+  const { width } = useResize();
+
   const agoTime = useMemo(() => {
     if (item.start_time) {
       const realStart = new Date(Number(`${item.start_time.toString()}000`));
@@ -60,7 +66,9 @@ const MatchesRow: React.FC<IComponentProps> = ({ item, teams }) => {
           onClick={() => {
             navigate(`${PublicRoutesEnum.MATCH}/${item.match_id}`);
           }}
-          className={styles.title}
+          className={cx(styles.title, {
+            smallScreen: width <= 600,
+          })}
         >
           {item.match_id}
         </span>
@@ -68,9 +76,12 @@ const MatchesRow: React.FC<IComponentProps> = ({ item, teams }) => {
           onClick={() => {
             navigate(`${PublicRoutesEnum.LEAGUE}/${item.leagueid}`);
           }}
-          className={cn(styles.subTitle, styles.rowHover)}
+          className={cx(styles.subTitle, styles.rowHover, {
+            smallScreen: width <= 600,
+          })}
         >
-          <span className={styles.rowHover}>{agoTime}</span>/
+          <span className={styles.rowHover}>{agoTime}</span>{' '}
+          {width >= 600 && '/'}
           <Tooltip arrow placement={'top'} title={item.league_name}>
             <div className={cn(styles.league, styles.rowHover)}>
               {item.league_name && item.league_name.length > 16

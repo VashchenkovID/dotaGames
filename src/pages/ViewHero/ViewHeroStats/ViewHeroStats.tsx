@@ -3,12 +3,17 @@ import { ViewHeroState } from 'src/pages/ViewHero/ViewHeroContainer';
 import styles from './ViewHeroStats.styl';
 import { HeroRolesRus, TypeAttackRUS } from 'src/utils/enum';
 import SimpleBar from 'simplebar-react';
+import cn from 'classnames/bind';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   hero: ViewHeroState;
 }
 
+const cx = cn.bind(styles);
+
 const ViewHeroStats: React.FC<IComponentProps> = ({ hero }) => {
+  const { width } = useResize();
   const heroStatsItems = [
     {
       title: 'Базовое здоровье',
@@ -53,7 +58,11 @@ const ViewHeroStats: React.FC<IComponentProps> = ({ hero }) => {
   ];
   const url = process.env.REACT_APP_API_URL_IMAGE;
   return (
-    <div className={styles.hero}>
+    <div
+      className={cx(styles.hero, {
+        smallScreen: width <= 1030,
+      })}
+    >
       <div className={styles.hero__leftSide}>
         <img className={styles.img} src={`${url}${hero.stats.img}`} />
         <span className={styles.typeAttack}>
@@ -73,7 +82,7 @@ const ViewHeroStats: React.FC<IComponentProps> = ({ hero }) => {
         </div>
       </div>
       <div className={styles.hero__rightSide}>
-        <SimpleBar style={{ maxHeight: 'calc(100vh - 320px)', minWidth:400 }}>
+        <SimpleBar style={{ maxHeight: 'calc(100vh - 320px)', minWidth: 400 }}>
           <span>{hero.lore}</span>
         </SimpleBar>
       </div>

@@ -6,6 +6,7 @@ import { Button } from '@material-ui/core';
 import { ViewTeamStateType } from 'src/pages/ViewTeam/ViewTeamContainer';
 import teams from 'src/pages/Teams/Teams';
 import SimpleBar from 'simplebar-react';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   matches: TeamByIdMatchesModel[];
@@ -21,7 +22,7 @@ const ViewTeamMatches: React.FC<IComponentProps> = ({
   //Подгрузка матчей (на api нет пагинации)
   const [isMore, setIsMore] = useState(1);
   const [isViewButton, setIsViewButton] = useState(true);
-
+  const { width } = useResize();
   useEffect(() => {
     if (isMore) {
       setTeamView((prevState) => {
@@ -42,7 +43,13 @@ const ViewTeamMatches: React.FC<IComponentProps> = ({
           <div className={styles.cell}>Противник</div>
           <div className={styles.cell}>Счет</div>
         </div>
-        <SimpleBar style={{ maxHeight: 'calc(100vh - 740px)' }}>
+        <SimpleBar
+          style={
+            width >= 1030
+              ? { maxHeight: 'calc(100vh - 740px)' }
+              : { maxHeight: 'calc(100vh - 1040px)' }
+          }
+        >
           <div className={styles.container__rows}>
             {matches.length > 0 &&
               matches.map((match, index) => (

@@ -132,6 +132,9 @@ const Header: React.FC<IHeaderProps> = () => {
           {items.map((item, index) => (
             <HeaderModule item={item} key={index} isSidebar={false} />
           ))}
+          <a className={styles.href} href={'https://docs.opendota.com/'}>
+            Документация API
+          </a>
         </nav>
       )}
     </div>

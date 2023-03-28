@@ -5,6 +5,7 @@ import StatusTeamBadge, {
   GameWinner,
 } from 'src/components/StatusTeamBadge/StatusTeamBadge';
 import styles from './ViewMatchTeamTableHeader.styl';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   type: WinnerSide;
@@ -41,7 +42,7 @@ const ViewMatchTeamTableHeader: React.FC<IComponentProps> = ({
     { id: 11, title: 'Предметы / Бафы', color: '' },
   ];
 
-  const width = window.innerWidth;
+  const { width } = useResize();
 
   return (
     <div className={styles.allContainer}>

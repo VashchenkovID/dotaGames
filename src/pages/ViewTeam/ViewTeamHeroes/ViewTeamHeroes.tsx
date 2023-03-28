@@ -6,13 +6,8 @@ import styles from './ViewTeamHeroes.styl';
 import SimpleBar from 'simplebar-react';
 import { Button } from '@material-ui/core';
 import ViewTeamHeroesRow from 'src/pages/ViewTeam/ViewTeamHeroesRow/ViewTeamHeroesRow';
-import {
-  SortByAlpha,
-  SortByAlphaSharp,
-  SortOutlined,
-  SortRounded,
-  SortSharp,
-} from '@material-ui/icons';
+import { SortOutlined } from '@material-ui/icons';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   heroes: TeamByIdHeroesModel[];
@@ -25,6 +20,7 @@ const ViewTeamHeroes: React.FC<IComponentProps> = ({
   team,
   setTeamView,
 }) => {
+  const { width } = useResize();
   //Подгрузка матчей (на api нет пагинации)
   const [isMore, setIsMore] = useState(1);
   const [isViewButton, setIsViewButton] = useState(true);
@@ -81,7 +77,13 @@ const ViewTeamHeroes: React.FC<IComponentProps> = ({
           <div className={styles.cell}>Игр</div>
           <div className={styles.cell}>Побед</div>
         </div>
-        <SimpleBar style={{ maxHeight: 'calc(100vh - 753px)' }}>
+        <SimpleBar
+          style={
+            width >= 1030
+              ? { maxHeight: 'calc(100vh - 753px)' }
+              : { maxHeight: 'calc(100vh - 1053px)' }
+          }
+        >
           <div className={styles.container__rows}>
             {heroes.length > 0 &&
               heroes.map((hero, index) => (

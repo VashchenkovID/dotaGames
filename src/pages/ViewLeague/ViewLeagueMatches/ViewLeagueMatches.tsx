@@ -1,7 +1,5 @@
 import React from 'react';
 import { ProMatchModel } from 'src/api/models/ProMatchModel';
-import ViewLeagueMatchesHeader from 'src/pages/ViewLeague/ViewLeagueMatchesHeader/ViewLeagueMatchesHeader';
-import ViewLeagueMatchesRow from 'src/pages/ViewLeague/ViewLeagueMatchesRow/ViewLeagueMatchesRow';
 import SimpleBar from 'simplebar-react';
 import styles from './ViewLeagueMatches.styl';
 import MatchesRow from 'src/pages/Matches/MatchesRow/MatchesRow';

@@ -1,5 +1,4 @@
 import React from 'react';
-import { InitHeroModel } from 'src/api/models/InitHeroModel';
 import styles from './HeroesSection.styl';
 import HeroesCell from 'src/pages/Heroes/HeroesCell/HeroesCell';
 import { HeroesCellModel } from 'src/pages/Heroes/HeroesContainer';

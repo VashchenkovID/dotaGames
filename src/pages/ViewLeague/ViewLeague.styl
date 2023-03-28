@@ -13,8 +13,15 @@
     display grid
     grid-template-columns 1fr 1fr
     gap 24px
+  &__body.smallScreen
+    display flex
+    flex-direction column
+    gap 24px
 .tier
   font-size 22px
   &__title
     color #BBDD00
     text-transform uppercase
+.simpleBar
+  height calc(100vh - 320px)
+  padding-right 10px

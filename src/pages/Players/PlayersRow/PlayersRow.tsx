@@ -3,16 +3,25 @@ import { ProPlayerReqModel } from 'src/api/models/ProPlayerReqModel';
 import { useNavigate } from 'react-router-dom';
 import { PublicRoutesEnum } from 'src/router';
 import styles from './PlayersRow.styl';
+import cn from 'classnames/bind';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   player: ProPlayerReqModel;
 }
 
+const cx = cn.bind(styles);
+
 const PlayersRow: React.FC<IComponentProps> = ({ player }) => {
   const navigate = useNavigate();
+  const { width } = useResize();
   return (
     <div className={styles.container}>
-      <div className={styles.nameCell}>
+      <div
+        className={cx(styles.nameCell, {
+          smallScreen: width <= 1030,
+        })}
+      >
         <img className={styles.img} src={player.avatarmedium} />
         <div className={styles.name}>{player.name}</div>
         <div className={styles.name}>{player.personaname}</div>

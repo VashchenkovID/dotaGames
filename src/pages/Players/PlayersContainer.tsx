@@ -5,8 +5,6 @@ import playersApi from 'src/api/requests/playersApi';
 import ScreenLoader from 'src/components/ScreenLoader/ScreenLoader';
 import Players from 'src/pages/Players/Players';
 
-interface IComponentProps {}
-
 const PlayersContainer: React.FC = () => {
   const [players, setPlayers] = useState<ProPlayerReqModel[]>([]);
   const [viewPlayers, setViewPlayers] = useState<ProPlayerReqModel[]>([]);

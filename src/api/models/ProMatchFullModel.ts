@@ -1,8 +1,8 @@
 import { ChatModel } from 'src/api/models/ChatModel';
 import { DraftTimeModel } from 'src/api/models/DraftTimeModel';
 import { PlayerModel } from 'src/api/models/PlayerModel';
-import {LeagueModel} from "src/api/models/LeagueModel";
-import {TeamModel} from "src/api/models/TeamModel";
+import { LeagueModel } from 'src/api/models/LeagueModel';
+import { TeamModel } from 'src/api/models/TeamModel';
 
 export interface ProMatchFullModel {
   match_id: number;

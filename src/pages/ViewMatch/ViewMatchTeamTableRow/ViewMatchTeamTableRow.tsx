@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import { PlayerModel } from 'src/api/models/PlayerModel';
 import { useAppSelector } from 'src/hooks/useAppSelector';
 import {
@@ -9,6 +9,7 @@ import styles from './ViewMatchTeamTableRow.styl';
 import cn from 'classnames';
 import { converterInThousand } from 'src/utils/functions';
 import ViewMatchTeamTableRowBackpack from 'src/pages/ViewMatch/ViewMatchTeamTableRowBackpack/ViewMatchTeamTableRowBackpack';
+import { useResize } from 'src/hooks/useResize';
 
 interface IComponentProps {
   player: PlayerModel;
@@ -42,7 +43,7 @@ const ViewMatchTeamTableRow: React.FC<IComponentProps> = ({ player }) => {
     };
   }, [player]);
 
-  const width = window.innerWidth;
+  const { width } = useResize();
 
   return (
     <div className={styles.row}>

@@ -5,8 +5,8 @@ import { Button } from '@material-ui/core';
 import styles from './Players.styl';
 import PlayersHeader from 'src/pages/Players/PlayersHeader/PlayersHeader';
 import SimpleBar from 'simplebar-react';
-import MatchesRow from 'src/pages/Matches/MatchesRow/MatchesRow';
 import PlayersRow from 'src/pages/Players/PlayersRow/PlayersRow';
+import {useResize} from "src/hooks/useResize";
 
 interface IComponentProps {
   viewPlayers: ProPlayerReqModel[];
@@ -19,11 +19,12 @@ const Players: React.FC<IComponentProps> = ({
   setIsMore,
   isViewButton,
 }) => {
+    const { width } = useResize();
   return (
     <div className={styles.container}>
       <PageTitle text={'Профессиональные игроки'} />
       <PlayersHeader />
-      <SimpleBar style={{ maxHeight: 'calc(100vh - 360px)' }}>
+      <SimpleBar style={width > 1000 ? { maxHeight: 'calc(100vh - 360px)' } : {maxHeight:'calc(100vh - 420px)'}}>
         {viewPlayers.length > 0 &&
           viewPlayers.map((match, index) => (
             <PlayersRow key={index} player={match} />

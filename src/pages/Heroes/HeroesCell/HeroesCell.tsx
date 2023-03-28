@@ -1,5 +1,4 @@
 import React from 'react';
-import { InitHeroModel } from 'src/api/models/InitHeroModel';
 import styles from './HeroesCell.styl';
 import { HeroesCellModel } from 'src/pages/Heroes/HeroesContainer';
 import { useNavigate } from 'react-router-dom';
