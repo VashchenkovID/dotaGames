@@ -7,6 +7,7 @@ import { HeaderIdEnum } from 'src/utils/enum';
 import HeaderModule from 'src/components/HeaderModule/HeaderModule';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import { Drawer, IconButton } from '@material-ui/core';
+import { useResize } from 'src/hooks/useResize';
 
 export interface HeaderItem {
   label: string;
@@ -94,19 +95,12 @@ const Header: React.FC<IHeaderProps> = () => {
     e.preventDefault();
     navigate(patch);
   };
-
-  const headerRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    if (headerRef && headerRef.current) {
-      setWidth(headerRef.current.clientWidth);
-    }
-  }, []);
+  const { width } = useResize();
 
   return (
-    <div ref={headerRef} className={styles.Header}>
-      {width <= 600 ? (
+    <div className={styles.Header}>
+      {width <= 800 ? (
         <div>
           <IconButton
             size={'medium'}
