@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { IRouteItem, PublicRoutesEnum } from 'src/router';
-import ShopPage from 'src/pages/ShopPage/ShopPage';
 import MainPage from 'src/pages/MainPage/MainPage';
 import MatchesContainer from 'src/pages/Matches/MatchesContainer';
 import ViewMatchContainer from 'src/pages/ViewMatch/ViewMatchContainer';
@@ -16,10 +15,6 @@ import ViewHeroContainer from 'src/pages/ViewHero/ViewHeroContainer';
 import ViewLeagueContainer from 'src/pages/ViewLeague/ViewLeagueContainer';
 
 export const publicRoutes: Array<IRouteItem> = [
-  {
-    path: PublicRoutesEnum.SHOP,
-    element: <ShopPage />,
-  },
   {
     path: PublicRoutesEnum.GENERAL,
     element: <MainPage />,
@@ -68,6 +63,7 @@ const AppRouter = () => {
   useEffect(() => {
     dispatch(fetchInit());
   }, []);
+
   return (
     <>
       <Routes>

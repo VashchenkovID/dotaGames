@@ -5,12 +5,9 @@ import { PublicRoutesEnum } from 'src/router';
 export interface PrivateRouterProps {}
 
 const PrivateRoute: React.FC<PrivateRouterProps> = () => {
-  // const [currentUserStatus] = useAppSelector((state) => [
-  //   selectCurrentUserStatus(state),
-  // ]);
   const checkPrivateRouter = useMemo(() => {
     if (!storageToken()) {
-      return <Navigate to={PublicRoutesEnum.SHOP} />;
+      return <Navigate to={PublicRoutesEnum.GENERAL} />;
     } else {
       return <Outlet />;
     }
